@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Landscape Flipbook A5</title>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #f0f0f0;
+    }
+
+    .book-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    #flipbook {
+      width: 1050px; /* 525px per page */
+      height: 370px;
+    }
+
+    .page {
+      width: 525px;
+      height: 370px;
+      background: white;
+    }
+
+    .page img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .hard {
+      background: white;
+      box-shadow: none !important;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="book-wrapper">
+    <div id="flipbook">
+      <!-- Front Cover -->
+      <div class="page hard"><img src="portfolio_pages/MINI PORTFOLIO_page-0001.jpg" alt="Cover" /></div>
+
+      <!-- Pages 2 to 23 -->
+      <div class="page"><img src="portfolio_pages/MINI PORTFOLIO_page-0002.jpg" alt="Page 2" /></div>
+      <div class="page"><img src="portfolio_pages/MINI PORTFOLIO_page-0003.jpg" alt="Page 3" /></div>
+      <div class="page"><img src="portfolio_pages/MINI PORTFOLIO_page-0004.jpg" alt="Page 4" /></div>
+      <div class="page"><img src="portfolio_pages/MINI PORTFOLIO_page-0005.jpg" alt="Page 5" /></div>
+      <div class="page"><img src="portfolio_pages/MINI PORTFOLIO_page-0006.jpg" alt="Page 6" /></div>
+      <div class="page"><img src="portfolio_pages/MINI PORTFOLIO_page-0007.jpg" alt="Page 7" /></div>
+      <div class="page"><img src="portfolio_pages/MINI PORTFOLIO_page-0008.jpg" alt="Page 8" /></div>
+      <div class="page"><img src="portfolio_pages/MINI PORTFOLIO_page-0009.jpg" alt="Page 9" /></div>
+      <div class="page"><img src="portfolio_pages/MINI PORTFOLIO_page-0010.jpg" alt="Page 10" /></div>
+      <div class="page"><img src="portfolio_pages/MINI PORTFOLIO_page-0011.jpg" alt="Page 11" /></div>
+      <div class="page"><img src="portfolio_pages/MINI PORTFOLIO_page-0012.jpg" alt="Page 12" /></div>
+      <div class="page"><img src="portfolio_pages/MINI PORTFOLIO_page-0013.jpg" alt="Page 13" /></div>
+      <div class="page"><img src="portfolio_pages/MINI PORTFOLIO_page-0014.jpg" alt="Page 14" /></div>
+      <div class="page"><img src="portfolio_pages/MINI PORTFOLIO_page-0015.jpg" alt="Page 15" /></div>
+      <div class="page"><img src="portfolio_pages/MINI PORTFOLIO_page-0016.jpg" alt="Page 16" /></div>
+      <div class="page"><img src="portfolio_pages/MINI PORTFOLIO_page-0017.jpg" alt="Page 17" /></div>
+      <div class="page"><img src="portfolio_pages/MINI PORTFOLIO_page-0018.jpg" alt="Page 18" /></div>
+      <div class="page"><img src="portfolio_pages/MINI PORTFOLIO_page-0019.jpg" alt="Page 19" /></div>
+      <div class="page"><img src="portfolio_pages/MINI PORTFOLIO_page-0020.jpg" alt="Page 20" /></div>
+      <div class="page"><img src="portfolio_pages/MINI PORTFOLIO_page-0021.jpg" alt="Page 21" /></div>
+      <div class="page"><img src="portfolio_pages/MINI PORTFOLIO_page-0022.jpg" alt="Page 22" /></div>
+      <div class="page"><img src="portfolio_pages/MINI PORTFOLIO_page-0023.jpg" alt="Page 23" /></div>
+
+      <!-- Back Cover -->
+      <div class="page hard"><img src="portfolio_pages/MINI PORTFOLIO_page-0024.jpg" alt="Back Cover" /></div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/3/turn.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      $('#flipbook').turn({
+        width: 1050,
+        height: 370,
+        autoCenter: true,
+        elevation: 50,
+        gradients: true,
+        duration: 800
+      });
+
+      // Flip by clicking left or right side
+      $('#flipbook').on('click', function (e) {
+        const offset = $(this).offset();
+        const clickX = e.pageX - offset.left;
+        const bookWidth = $(this).width();
+
+        if (clickX < bookWidth / 2) {
+          $('#flipbook').turn('previous'); // click left
+        } else {
+          $('#flipbook').turn('next'); // click right
+        }
+      });
+    });
+  </script>
+</body>
+</html>
